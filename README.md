@@ -2,13 +2,14 @@ Bem-vindo ao repositório base para o desafio de programação da **Red District
 
 ## 📌 Objetivo
 
-Desenvolver, em Unity **[6000.0.25f1 LTS](unityhub://6000.0.25f1/4859ab7b5a49)**, uma cena única na qual um personagem 3D consiga:
+Desenvolver, na Unity **[6000.0.25f1 LTS]([unityhub://6000.0.25f1/4859ab7b5a49](https://unity.com/pt/releases/editor/archive))**, uma cena única na qual um personagem 3D consiga:
 
 -   **Movimentar-se** livremente em uma visão horizontal, similar a jogos **beat ‘em up**.
 -   **Atacar** com golpes básicos em sequência.
 -   **Realizar um ataque especial** com tempo de recarga (**cooldown**).
 -   **Interagir com a interface de usuário (UI)**.
 -   **Executar e reproduzir efeitos sonoros** coerentes às ações do personagem e interações com a UI.
+-   **Link para download da Unity:** https://unity.com/pt/releases/editor/archive
 
 ## 🎯 Requisitos Técnicos
 
