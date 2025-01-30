@@ -84,6 +84,6 @@ public class AvatarStateManager : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.CompareTag("Enemy"))
-            Debug.Log(other.gameObject.transform.parent.name);
+            Debug.Log(other.gameObject.name);
     }
 }
