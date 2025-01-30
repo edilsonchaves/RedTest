@@ -24,8 +24,8 @@ public class AvatarStateManager : MonoBehaviour
     private InputAction _attackAction;
     public InputAction AttackAction => _attackAction;
 
-    [SerializeField] private Rigidbody _rbAvatar;
-    public Rigidbody RbAvatar => _rbAvatar;
+    [SerializeField] private Rigidbody _avatarRb;
+    public Rigidbody AvatarRb => _avatarRb;
 
     [SerializeField] private PlayerInput _avatarInput;
     [SerializeField] private Animator _avatarAnimator;
