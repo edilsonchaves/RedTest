@@ -12,6 +12,9 @@ public class AvatarStateManager : MonoBehaviour
     private AvatarJumpState _jumpState = new AvatarJumpState();
     public AvatarJumpState JumpState => _jumpState;
 
+    private AvatarAttackState _attackState = new AvatarAttackState();
+    public AvatarAttackState AttackState => _attackState;
+
     private AvatarJumpAttackState _jumpAttackState = new AvatarJumpAttackState();
     public AvatarJumpAttackState JumpAttackState => _jumpAttackState;
 
@@ -28,6 +31,8 @@ public class AvatarStateManager : MonoBehaviour
     public Rigidbody AvatarRb => _avatarRb;
 
     [SerializeField] private PlayerInput _avatarInput;
+    [SerializeField] private SphereCollider _avatarPunchCollider;
+    public SphereCollider AvatarPunchCollider => _avatarPunchCollider;
     [SerializeField] private Animator _avatarAnimator;
     public Animator AvatarAnimator => _avatarAnimator;
 
@@ -64,5 +69,10 @@ public class AvatarStateManager : MonoBehaviour
         {
             SwitchState(IdleState);
         }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        Debug.Log(other.gameObject.transform.parent.name);
     }
 }
