@@ -10,6 +10,7 @@ public class AvatarGroundedState : AvatarBaseState
         _avatar = avatar;
         avatar.JumpAction.performed += JumpCommand;
         avatar.AttackAction.performed += AttackCommand;
+        avatar.SpecialAttackAction.performed += SpecialAttackCommand;
     }
 
     public override void UpdateState(AvatarStateManager avatar)
@@ -21,6 +22,7 @@ public class AvatarGroundedState : AvatarBaseState
         _avatar = null;
         avatar.JumpAction.performed -= JumpCommand;
         avatar.AttackAction.performed -= AttackCommand;
+        avatar.SpecialAttackAction.performed -= SpecialAttackCommand;
     }
 
     private void JumpCommand(InputAction.CallbackContext context)
@@ -37,11 +39,24 @@ public class AvatarGroundedState : AvatarBaseState
 
     }
 
+    private void SpecialAttackCommand(InputAction.CallbackContext context)
+    {
+        SpecialAttackExecution(context);
+    }
+
     protected virtual void AttackExecution(InputAction.CallbackContext context)
     {
         if (context.performed)
         {
             _avatar.SwitchState(_avatar.AttackState);
+        }
+    }
+
+    private void SpecialAttackExecution(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            _avatar.SwitchState(_avatar.SpecialAttackState);
         }
     }
 }
