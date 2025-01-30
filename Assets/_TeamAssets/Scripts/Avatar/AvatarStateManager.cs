@@ -15,6 +15,9 @@ public class AvatarStateManager : MonoBehaviour
     private AvatarAttackState _attackState = new AvatarAttackState();
     public AvatarAttackState AttackState => _attackState;
 
+    private AvatarSpecialAttackState _specialAttackState = new AvatarSpecialAttackState();
+    public AvatarSpecialAttackState SpecialAttackState => _specialAttackState;
+
     private AvatarJumpAttackState _jumpAttackState = new AvatarJumpAttackState();
     public AvatarJumpAttackState JumpAttackState => _jumpAttackState;
 
@@ -27,18 +30,25 @@ public class AvatarStateManager : MonoBehaviour
     private InputAction _attackAction;
     public InputAction AttackAction => _attackAction;
 
+    private InputAction _specialAttackAction;
+    public InputAction SpecialAttackAction => _specialAttackAction;
+
     [SerializeField] private Rigidbody _avatarRb;
     public Rigidbody AvatarRb => _avatarRb;
 
     [SerializeField] private PlayerInput _avatarInput;
     [SerializeField] private SphereCollider _avatarPunchCollider;
     public SphereCollider AvatarPunchCollider => _avatarPunchCollider;
+    [SerializeField] private SphereCollider _avatarSpecialCollider;
+    public SphereCollider AvatarSpecialCollider => _avatarSpecialCollider;
+
     [SerializeField] private Animator _avatarAnimator;
     public Animator AvatarAnimator => _avatarAnimator;
 
     private const string MOVEMENT_INPUT_ACTION = "Move";
     private const string JUMP_INPUT_ACTION = "Jump";
     private const string ATTACK_INPUT_ACTION = "Attack";
+    private const string SPECIAL_ATTACK_INPUT_ACTION = "Special";
     private const string GROUND_TAG = "Ground";
 
     private void Start()
@@ -47,7 +57,7 @@ public class AvatarStateManager : MonoBehaviour
         _moveAction = _avatarInput.actions.FindAction(MOVEMENT_INPUT_ACTION);
         _jumpAction = _avatarInput.actions.FindAction(JUMP_INPUT_ACTION);
         _attackAction = _avatarInput.actions.FindAction(ATTACK_INPUT_ACTION);
-
+        _specialAttackAction = _avatarInput.actions.FindAction(SPECIAL_ATTACK_INPUT_ACTION);
         _currentState.EnterState(this);
     }
 
@@ -73,6 +83,7 @@ public class AvatarStateManager : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log(other.gameObject.transform.parent.name);
+        if(other.gameObject.CompareTag("Enemy"))
+            Debug.Log(other.gameObject.transform.parent.name);
     }
 }
