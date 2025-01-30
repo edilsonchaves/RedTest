@@ -3,6 +3,15 @@ using UnityEngine.InputSystem;
 
 public class AvatarStateManager : MonoBehaviour
 {
+    private bool _canUseSpecialAttack = true;
+    public bool CanUseSpecialAttack
+    {
+        get { return _canUseSpecialAttack; }
+        set { _canUseSpecialAttack = value; }
+    }
+
+    private float _currentSpecialPoint = 100;
+    private float _maxSpecialPoint = 100;
     private AvatarBaseState _currentState;
     private AvatarIdleState _idleState = new AvatarIdleState();
     public AvatarIdleState IdleState => _idleState;
@@ -83,7 +92,32 @@ public class AvatarStateManager : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.CompareTag("Enemy"))
-            Debug.Log(other.gameObject.name);
+        if (other.gameObject.CompareTag("Enemy"))
+        {
+            IncreaseSpecialPoint();
+        }
+    }
+
+    public void IncreaseSpecialPoint()
+    {
+        Debug.Log(_currentState);
+        if (_currentState == _specialAttackState)
+        {
+            return;
+        }
+
+        _currentSpecialPoint += 5;
+        if (_currentSpecialPoint >= _maxSpecialPoint)
+        {
+             _currentSpecialPoint = _maxSpecialPoint;
+            _canUseSpecialAttack = true;
+        }
+
+        Debug.Log(_currentSpecialPoint);
+    }
+
+    public void ResetSpecialPoint()
+    {
+        _currentSpecialPoint = 0;
     }
 }

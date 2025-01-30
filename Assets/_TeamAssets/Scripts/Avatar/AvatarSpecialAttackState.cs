@@ -8,6 +8,8 @@ public class AvatarSpecialAttackState : AvatarBaseState
 
     public override void EnterState(AvatarStateManager avatar)
     {
+        avatar.CanUseSpecialAttack = false;
+        avatar.ResetSpecialPoint();
         avatar.AvatarAnimator?.Play(AVATAR_JUMP_ATTACK_ANIMATION);
     }
 
