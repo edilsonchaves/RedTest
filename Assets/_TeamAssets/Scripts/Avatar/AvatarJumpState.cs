@@ -15,7 +15,7 @@ public class AvatarJumpState : AvatarAirState
         _isJumpingDown = false;
         avatar.AttackAction.performed += Attack;
 
-        avatar.RbAvatar.AddForce(_jumpForce);
+        avatar.AvatarRb.AddForce(_jumpForce);
         avatar.AvatarAnimator?.Play(AVATAR_JUMPING_UP_ANIMATION);
 
     }
@@ -24,7 +24,7 @@ public class AvatarJumpState : AvatarAirState
     {
         base.UpdateState(avatar);
 
-        if(avatar.RbAvatar.linearVelocity.y < 0 && !_isJumpingDown)
+        if(avatar.AvatarRb.linearVelocity.y < 0 && !_isJumpingDown)
         {
             _isJumpingDown = true;
             avatar.AvatarAnimator?.Play(AVATAR_JUMPING_DOWN_ANIMATION);

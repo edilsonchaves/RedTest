@@ -6710,7 +6710,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63ea74e0df7e54049a7ca4af651a3eec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _rbAvatar: {fileID: 7404342756954452753}
+  _avatarRb: {fileID: 7404342756954452753}
   _avatarInput: {fileID: 7404342756954452752}
   _avatarAnimator: {fileID: 5652705161591831232}
 --- !u!114 &7404342756954452752
