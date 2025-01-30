@@ -41,7 +41,8 @@ public class AvatarGroundedState : AvatarBaseState
 
     private void SpecialAttackCommand(InputAction.CallbackContext context)
     {
-        SpecialAttackExecution(context);
+        if(_avatar.CanUseSpecialAttack)
+            SpecialAttackExecution(context);
     }
 
     protected virtual void AttackExecution(InputAction.CallbackContext context)
