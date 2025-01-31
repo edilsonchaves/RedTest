@@ -4,6 +4,7 @@ using UnityEngine.InputSystem;
 public class AvatarAttackState : AvatarGroundedState
 {
     private AvatarStateManager _avatar;
+    private TypeAttack[] _punchsTypeAttack = new TypeAttack[] { TypeAttack.light, TypeAttack.light, TypeAttack.normal};
     private string _currentAttackCombo;
     private int _attackIndex = 1;
     private int _indexLimit = 3;
@@ -84,6 +85,7 @@ public class AvatarAttackState : AvatarGroundedState
     private void ExecuteAttackAnimation()
     {
         _isExecutingAttack = true;
+        _avatar.DefineLastAttack(_punchsTypeAttack[_attackIndex - 1]);
         _currentAttackCombo = AVATAR_ATTACK_ANIMATION + _attackIndex;
         _avatar.AvatarAnimator?.Play(_currentAttackCombo);
         IncreaseAttackIndex();

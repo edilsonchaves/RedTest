@@ -2535,6 +2535,7 @@ GameObject:
   - component: {fileID: 754029700867293725}
   - component: {fileID: 4959454150862820708}
   - component: {fileID: 4029500214952783923}
+  - component: {fileID: 165923068992774324}
   m_Layer: 0
   m_Name: Go_Enemy
   m_TagString: Enemy
@@ -2591,6 +2592,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd5e5db03aa39f64d94624bc45e6c128, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _dummyRB: {fileID: 165923068992774324}
   _dummyDamageCurve:
     serializedVersion: 2
     m_Curve:
@@ -2645,6 +2647,7 @@ MonoBehaviour:
   _audioSource: {fileID: 4029500214952783923}
   _audioClips:
   - {fileID: 8300000, guid: b67777fec21e2dc4d9f1907ad9e24c9d, type: 3}
+  _knockbackForce: 0000000014050000b80b0000
 --- !u!82 &4029500214952783923
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2742,6 +2745,33 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!54 &165923068992774324
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7861659548357560622}
+  serializedVersion: 4
+  m_Mass: 10
+  m_Drag: 10
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 116
+  m_CollisionDetection: 0
 --- !u!1 &7993921983572327192
 GameObject:
   m_ObjectHideFlags: 0

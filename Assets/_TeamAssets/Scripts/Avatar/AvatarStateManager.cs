@@ -11,6 +11,7 @@ public class AvatarStateManager : MonoBehaviour
         set { _canUseSpecialAttack = value; }
     }
 
+    private TypeAttack _lastTypeAttack;
     private float _currentSpecialPoint = 100;
     private float _maxSpecialPoint = 100;
     private AvatarBaseState _currentState;
@@ -102,7 +103,7 @@ public class AvatarStateManager : MonoBehaviour
         if (other.gameObject.CompareTag("Enemy"))
         {
             IncreaseSpecialPoint();
-            other.GetComponent<DummyStateManager>()?.ReceiveDamage();
+            other.GetComponent<DummyStateManager>()?.ReceiveDamage(transform.position, _lastTypeAttack);
         }
     }
 
@@ -134,5 +135,10 @@ public class AvatarStateManager : MonoBehaviour
             return;
         _audioSource.clip = _audioClips[musicIndex];
         _audioSource.Play();
+    }
+
+    public void DefineLastAttack(TypeAttack attack)
+    {
+        _lastTypeAttack = attack;
     }
 }

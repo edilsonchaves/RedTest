@@ -14,9 +14,11 @@ public class DummyStateManager : MonoBehaviour
     private float durationHurtAnimationTime = 1;
     private float elapsedHurtAnimationTime;
     private List<Material> _dummyMaterial = new List<Material>();
+    [SerializeField] private Rigidbody _dummyRB;
     [SerializeField] private AnimationCurve _dummyDamageCurve;
     [SerializeField] private AudioSource _audioSource;
     [SerializeField] private List<AudioClip> _audioClips;
+    [SerializeField] private int[] _knockbackForce;
 
     void Start()
     {
@@ -41,9 +43,18 @@ public class DummyStateManager : MonoBehaviour
         _currentState.EnterState(this);
     }
 
-    public void ReceiveDamage()
+    public void ReceiveDamage(Vector3 avatarPosition, TypeAttack typeAttack)
     {
+        Knockback(avatarPosition, typeAttack);
         SwitchState(_hurtState);
+    }
+
+    private void Knockback(Vector3 avatarPosition, TypeAttack typeAttack)
+    {
+        var difference = transform.position - avatarPosition;
+        var differenceRelative = difference.normalized;
+
+        _dummyRB.AddForce(differenceRelative * _knockbackForce[((int)typeAttack)]);
     }
 
     private void SetDummyHurtMaterialColor(float newValue)
