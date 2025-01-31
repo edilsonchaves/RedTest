@@ -15,6 +15,8 @@ public class DummyStateManager : MonoBehaviour
     private float elapsedHurtAnimationTime;
     private List<Material> _dummyMaterial = new List<Material>();
     [SerializeField] private AnimationCurve _dummyDamageCurve;
+    [SerializeField] private AudioSource _audioSource;
+    [SerializeField] private List<AudioClip> _audioClips;
 
     void Start()
     {
@@ -69,5 +71,12 @@ public class DummyStateManager : MonoBehaviour
             yield return null;
 
         }
+    }
+    public void ExecuteMusic(int musicIndex)
+    {
+        if (musicIndex >= _audioClips.Count)
+            return;
+        _audioSource.clip = _audioClips[musicIndex];
+        _audioSource.Play();
     }
 }
