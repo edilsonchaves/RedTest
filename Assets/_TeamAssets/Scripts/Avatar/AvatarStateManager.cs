@@ -98,6 +98,7 @@ public class AvatarStateManager : MonoBehaviour
         if (other.gameObject.CompareTag("Enemy"))
         {
             IncreaseSpecialPoint();
+            other.GetComponent<DummyStateManager>()?.ReceiveDamage();
         }
     }
 
