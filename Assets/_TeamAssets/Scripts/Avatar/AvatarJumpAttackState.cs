@@ -6,10 +6,12 @@ public class AvatarJumpAttackState : AvatarAirState
     private const int AVATAR_ATTACK_SOUND_INDEX = 0;
     private const float TIMER_ATTACK_COLLIDER_ENABLE_NORMALIZED = 0.3f;
     private const float TIMER_ATTACK_COLLIDER_DISABLE_NORMALIZED = 0.45f;
+    private const TypeAttack AVATAR_JUMP_ATTACK_TYPE_ATTACK = TypeAttack.light;
 
     public override void EnterState(AvatarStateManager avatar)
     {
         base.EnterState(avatar);
+        avatar.DefineLastAttack(AVATAR_JUMP_ATTACK_TYPE_ATTACK);
         avatar.AvatarAnimator?.Play(AVATAR_JUMP_ATTACK_ANIMATION);
     }
 

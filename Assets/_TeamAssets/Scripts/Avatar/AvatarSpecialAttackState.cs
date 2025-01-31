@@ -6,11 +6,13 @@ public class AvatarSpecialAttackState : AvatarBaseState
     private const int AVATAR_SPECIAL_ATTACK_SOUND_INDEX = 1;
     private const float TIMER_ATTACK_COLLIDER_ENABLE_NORMALIZED = 0.3f;
     private const float TIMER_ATTACK_COLLIDER_DISABLE_NORMALIZED = 0.45f;
+    private const TypeAttack AVATAR_SPECIAL_ATTACK_TYPE_ATTACK = TypeAttack.heavy;
 
     public override void EnterState(AvatarStateManager avatar)
     {
         avatar.CanUseSpecialAttack = false;
         avatar.ResetSpecialPoint();
+        avatar.DefineLastAttack(AVATAR_SPECIAL_ATTACK_TYPE_ATTACK);
         avatar.AvatarAnimator?.Play(AVATAR_JUMP_ATTACK_ANIMATION);
     }
 
