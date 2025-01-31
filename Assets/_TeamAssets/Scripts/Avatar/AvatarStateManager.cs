@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -55,6 +56,9 @@ public class AvatarStateManager : MonoBehaviour
     public Animator AvatarAnimator => _avatarAnimator;
 
     [SerializeField] private SpecialPointBar _specialPointBar;
+
+    [SerializeField] private AudioSource _audioSource;
+    [SerializeField] private List<AudioClip> _audioClips;
 
     private const string MOVEMENT_INPUT_ACTION = "Move";
     private const string JUMP_INPUT_ACTION = "Jump";
@@ -122,5 +126,13 @@ public class AvatarStateManager : MonoBehaviour
     {
         _currentSpecialPoint = 0;
         _specialPointBar.SetSpecialPointBar(_currentSpecialPoint, _maxSpecialPoint, _canUseSpecialAttack);
+    }
+
+    public void ExecuteMusic(int musicIndex)
+    {
+        if (musicIndex >= _audioClips.Count)
+            return;
+        _audioSource.clip = _audioClips[musicIndex];
+        _audioSource.Play();
     }
 }

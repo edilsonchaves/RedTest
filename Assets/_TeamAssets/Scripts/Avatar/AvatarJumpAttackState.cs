@@ -3,6 +3,7 @@ using UnityEngine;
 public class AvatarJumpAttackState : AvatarAirState
 {
     private const string AVATAR_JUMP_ATTACK_ANIMATION = "Jumping Punch";
+    private const int AVATAR_ATTACK_SOUND_INDEX = 0;
     private const float TIMER_ATTACK_COLLIDER_ENABLE_NORMALIZED = 0.3f;
     private const float TIMER_ATTACK_COLLIDER_DISABLE_NORMALIZED = 0.45f;
 
@@ -33,6 +34,7 @@ public class AvatarJumpAttackState : AvatarAirState
             if (avatar.AvatarAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime >= TIMER_ATTACK_COLLIDER_ENABLE_NORMALIZED)
             {
                 avatar.AvatarPunchCollider.enabled = true;
+                avatar.ExecuteMusic(AVATAR_ATTACK_SOUND_INDEX);
             }
         }
     }

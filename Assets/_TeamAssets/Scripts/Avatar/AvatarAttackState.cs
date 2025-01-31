@@ -9,6 +9,7 @@ public class AvatarAttackState : AvatarGroundedState
     private int _indexLimit = 3;
     private bool _isBlockCombo;
     private bool _isExecutingAttack;
+    private const int AVATAR_ATTACK_SOUND_INDEX = 0;
     private const string AVATAR_ATTACK_ANIMATION = "Punch ";
     private const float TIMER_ATTACK_COLLIDER_ENABLE_NORMALIZED = 0.5f;
     private const float TIMER_ATTACK_COLLIDER_DISABLE_NORMALIZED = 0.75f;
@@ -59,6 +60,7 @@ public class AvatarAttackState : AvatarGroundedState
             if (avatar.AvatarAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime >= TIMER_ATTACK_COLLIDER_ENABLE_NORMALIZED)
             {
                 avatar.AvatarPunchCollider.enabled = true;
+                avatar.ExecuteMusic(AVATAR_ATTACK_SOUND_INDEX);
             }
         }
     }
