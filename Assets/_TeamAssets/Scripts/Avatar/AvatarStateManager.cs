@@ -69,7 +69,7 @@ public class AvatarStateManager : MonoBehaviour
         _jumpAction = _avatarInput.actions.FindAction(JUMP_INPUT_ACTION);
         _attackAction = _avatarInput.actions.FindAction(ATTACK_INPUT_ACTION);
         _specialAttackAction = _avatarInput.actions.FindAction(SPECIAL_ATTACK_INPUT_ACTION);
-        _specialPointBar.SetSpecialPointBar(_currentSpecialPoint, _maxSpecialPoint);
+        _specialPointBar.SetSpecialPointBar(_currentSpecialPoint, _maxSpecialPoint, _canUseSpecialAttack);
         _currentState.EnterState(this);
     }
 
@@ -110,17 +110,17 @@ public class AvatarStateManager : MonoBehaviour
         }
 
         _currentSpecialPoint += 5;
+        _specialPointBar.SetSpecialPointBar(_currentSpecialPoint, _maxSpecialPoint, _canUseSpecialAttack);
         if (_currentSpecialPoint >= _maxSpecialPoint)
         {
              _currentSpecialPoint = _maxSpecialPoint;
             _canUseSpecialAttack = true;
         }
-        _specialPointBar.SetSpecialPointBar(_currentSpecialPoint, _maxSpecialPoint);
     }
 
     public void ResetSpecialPoint()
     {
         _currentSpecialPoint = 0;
-        _specialPointBar.SetSpecialPointBar(_currentSpecialPoint, _maxSpecialPoint);
+        _specialPointBar.SetSpecialPointBar(_currentSpecialPoint, _maxSpecialPoint, _canUseSpecialAttack);
     }
 }
