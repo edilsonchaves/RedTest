@@ -70,6 +70,7 @@ public class AvatarAttackState : AvatarGroundedState
     {
         base.ExitState(avatar);
         _avatar = null;
+        avatar.AvatarPunchCollider.enabled = false;
     }
     protected override void AttackExecution(InputAction.CallbackContext context)
     {
