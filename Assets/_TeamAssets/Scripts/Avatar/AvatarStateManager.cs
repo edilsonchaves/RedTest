@@ -54,6 +54,8 @@ public class AvatarStateManager : MonoBehaviour
     [SerializeField] private Animator _avatarAnimator;
     public Animator AvatarAnimator => _avatarAnimator;
 
+    [SerializeField] private SpecialPointBar _specialPointBar;
+
     private const string MOVEMENT_INPUT_ACTION = "Move";
     private const string JUMP_INPUT_ACTION = "Jump";
     private const string ATTACK_INPUT_ACTION = "Attack";
@@ -67,6 +69,7 @@ public class AvatarStateManager : MonoBehaviour
         _jumpAction = _avatarInput.actions.FindAction(JUMP_INPUT_ACTION);
         _attackAction = _avatarInput.actions.FindAction(ATTACK_INPUT_ACTION);
         _specialAttackAction = _avatarInput.actions.FindAction(SPECIAL_ATTACK_INPUT_ACTION);
+        _specialPointBar.SetSpecialPointBar(_currentSpecialPoint, _maxSpecialPoint);
         _currentState.EnterState(this);
     }
 
@@ -100,7 +103,6 @@ public class AvatarStateManager : MonoBehaviour
 
     public void IncreaseSpecialPoint()
     {
-        Debug.Log(_currentState);
         if (_currentState == _specialAttackState)
         {
             return;
@@ -112,12 +114,12 @@ public class AvatarStateManager : MonoBehaviour
              _currentSpecialPoint = _maxSpecialPoint;
             _canUseSpecialAttack = true;
         }
-
-        Debug.Log(_currentSpecialPoint);
+        _specialPointBar.SetSpecialPointBar(_currentSpecialPoint, _maxSpecialPoint);
     }
 
     public void ResetSpecialPoint()
     {
         _currentSpecialPoint = 0;
+        _specialPointBar.SetSpecialPointBar(_currentSpecialPoint, _maxSpecialPoint);
     }
 }
